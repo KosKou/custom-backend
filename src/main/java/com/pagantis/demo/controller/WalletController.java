@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class WalletController {
@@ -33,6 +34,11 @@ public class WalletController {
     @GetMapping("/api/wallets/{email}")
     public List<Wallet> listByUser(@PathVariable String email){
         return walletService.findAllByUser(email);
+    }
+
+    @GetMapping("/api/wallets/u/{id}")
+    public Wallet listById(@PathVariable String id){
+        return walletService.findById(id).get();
     }
 
 
